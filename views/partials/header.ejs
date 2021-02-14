@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div id="back">
+        <nav>
+
+            <a href="/sell/1">Available Cars</a>
+            
+            
+           
+            <% if(isLoggedInVal){ %>
+                <a href=<%="/profile/" +cr.username %>>Profile</a>
+                <a href="/logout">logout</a>
+                <% } %>
+            
+
+        </nav>

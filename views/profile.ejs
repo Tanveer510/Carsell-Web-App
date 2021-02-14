@@ -1,0 +1,71 @@
+<%- include('partials/header.ejs') %>
+
+<link rel="stylesheet" href="../stylesheets/profile.css">
+
+<style>
+    #profileImageForm {
+        visibility: hidden;
+    }
+</style>
+
+    <div id="container">
+        <div id="dets">
+            <div id="image">
+                <img style="width: 100%; height: 100%;" src=<%=cr.userImageUrl%>>
+            </div>
+            <div id="txt">
+                <h2><%=cr.name%></h2>
+                <h2><%=cr.email%></h2>
+                <h2><%=cr.username%></h2>
+                
+                <button id="profileButton">change image</button>
+            </div>
+        </div>
+
+        <form action="/uploadImage" method="POST" id="profileImageForm" enctype="multipart/form-data">
+            <input name="profileImage" class="profile-file" type="file">
+            <input class="profile-submit" type="submit">
+        </form>
+        
+        <div id="form">
+            <h2>Make new car selling listing.</h2>
+            <form action="/addCar" method="POST" enctype="multipart/form-data">
+                <input type="text" placeholder="car's price" name="carPrice">
+                <input type="text" placeholder="car's name" name="carName">
+                <input type="text" placeholder="contact" name="contact">
+                <input type="file" name="carImage">
+                <input type="submit">
+            </form>
+        </div>
+
+        <div id="posts">
+            
+            <h3>Your Previous Entries</h3>
+            
+            <% fr.reverse().forEach((car)=>{ %>
+                <div class="post">
+                    <img src=<%=car.carImageUrl%> alt="some image">
+                    <h3><%=car.name%></h3>
+                    <h3><%=car.price%></h3>
+                    <a href="tel:7828994540">call me </a>
+                </div>
+            <% }) %>
+            
+        </div>
+    </div>
+            
+    <script>
+       
+        document.querySelector('#profileButton').addEventListener('click',function(){
+
+            document.querySelector('.profile-file').click();
+
+            document.querySelector('.profile-file').addEventListener('change',function(){
+                document.querySelector('#profileImageForm').submit();
+            });
+
+        })
+    
+    </script>
+
+<%- include('partials/footer.ejs') %>
