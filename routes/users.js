@@ -1,7 +1,7 @@
 const plm = require('passport-local-mongoose');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/puffin');
+mongoose.connect('mongodb+srv://car:car@cluster0.60a2n.mongodb.net/cardb',{ useNewUrlParser: true,useUnifiedTopology: true });
 
 let UserSchema = mongoose.Schema({
   name: String,
